@@ -16,7 +16,7 @@ SCREEN_HEIGHT = 480
 SCREEN_CENTRE_X = SCREEN_WIDTH // 2
 SCREEN_CENTRE_Y = SCREEN_HEIGHT // 2
 
-FRAME_RATE = 60  # Frame rate in frames per second (FPS)
+FRAME_RATE = 2  # Frame rate in frames per second (FPS)
 
 KEY_BLUE = pygame.K_b
 KEY_GREEN = pygame.K_g

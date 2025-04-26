@@ -6,13 +6,17 @@ from game_constants import FRAME_RATE
 from game_constants import  KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT
 from game_constants import KEY_COLOUR_MAP
 from game_constants import SNAKE_DIRECTION_UP, SNAKE_DIRECTION_DOWN, SNAKE_DIRECTION_LEFT, SNAKE_DIRECTION_RIGHT
+from game_constants import SNAKE_SIZE
 
 """
 Change the functionality so that the snake continues to move in the direction of the last key pressed, even when the key is released.
 """
 
-snake_x = SCREEN_CENTRE_X  # Initial x position of the snake
-snake_y = SCREEN_CENTRE_Y  # Initial y position of the snake
+print("screen width: ", SCREEN_WIDTH)
+print("screen height: ", SCREEN_HEIGHT)
+
+snake_x = SCREEN_WIDTH //2  # Initial x position of the snake
+snake_y = SCREEN_HEIGHT //2  # Initial y position of the snake
 
 # Initialize Pygame
 pygame.init()
@@ -31,6 +35,7 @@ colour = COLOUR_GREEN  # Default colour
 
 # Create an instance of the snake class and draw it
 slippy = Snake(colour, snake_x, snake_y)
+print(slippy)  # Print the snake object to see its initial state    
 
 game_over = False
 while not game_over:
@@ -54,8 +59,11 @@ while not game_over:
                 slippy.direction = SNAKE_DIRECTION_RIGHT
 
     screen.fill(COLOUR_BLACK)
-    slippy.move2()  # Move the snake in the current direction
-    slippy.draw(screen)
+    slippy.move()  # Move the snake in the current direction
+    #segments = slippy.get_segments()  # Get the squares that make up the snake's body
+
+    for segment in slippy.body:
+        pygame.draw.rect(screen, slippy.colour, [segment[0], segment[1],SNAKE_SIZE, SNAKE_SIZE])
 
     pygame.display.update()
 
